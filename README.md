@@ -2,47 +2,37 @@
 
 **An efficient graph-ranking system implemented in C11.**
 
-GraphRanker is a command-line application that processes directed, weighted graphs and maintains a ranking of the top `k` graphs based on their shortest-path distances from a designated source node.
+GraphRanker is a command-line application that processes directed, weighted graphs and maintains a ranking of the top `k` graphs based on their shortest-path distances from a designated source node. It was developed as part of the Algorithms and Data Structures coursework project. 
 
-The project focuses on algorithmic problem-solving, data structures, and performance optimization, with particular attention to time and memory efficiency.
-
----
+The project was designed to evaluate algorithmic correctness and efficiency through automated testing, including execution-time and memory-consumption measurements.
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Key Features](#key-features)
 - [How It Works](#how-it-works)
 - [Input Format](#input-format)
 - [Example](#example)
 - [Technologies](#technologies)
 - [Compilation and Execution](#compilation-and-execution)
-- [Technical Skills Demonstrated](#technical-skills-demonstrated)
-
----
 
 ## Overview
 
-The application receives a sequence of commands describing graphs and ranking queries.
-
-Each graph is represented by an adjacency matrix and assigned a unique integer index based on its insertion order.
+The application receives a sequence of commands describing graphs and ranking queries. Each graph is represented by an adjacency matrix and assigned a unique integer index based on its insertion order.
 
 The ranking is determined by the following metric:
-
 **The sum of the shortest-path distances from node `0` to every other reachable node.**
-
 Graphs with lower metric values receive higher rankings.
 
 When multiple graphs have the same metric value, insertion order is used as a tie-breaker, giving priority to the graph added first.
 
-## Key Features
+This project demonstrates practical experience with:
 
-- **Directed weighted graphs:** Graph representation using adjacency matrices.
-- **Shortest-path computation:** Evaluation of shortest-path distances from a source node.
-- **Dynamic ranking:** Management of the top `k` graphs as new graphs are processed.
-- **Tie-breaking:** Deterministic ranking based on graph insertion order.
-- **Performance-oriented implementation:** Designed with algorithmic efficiency and memory consumption in mind.
-- **Command-line interface:** Standard input/output processing.
+- **Algorithms and Data Structures:** Applying algorithmic techniques to graph-processing problems.
+- **Graph Theory:** Working with directed, weighted graphs and adjacency matrices.
+- **Shortest-Path Algorithms:** Computing shortest-path distances from a source vertex.
+- **Ranking and Data Management:** Maintaining a ranking under sequential insertions and queries.
+- **Algorithmic Complexity:** Considering execution time and memory consumption.
+- **Low-Level Programming:** Implementing a solution in C11 under strict library and execution constraints.
 
 ## How It Works
 
@@ -60,22 +50,7 @@ Each graph receives an incremental index, starting from `0`.
 
 ### 2. `TopK`
 
-Returns the indices of the `k` graphs with the smallest metric values among those processed so far.
-
-The metric is calculated as:
-
-\[
-Score(G) = \sum_{v \in R(G)} dist(0,v)
-\]
-
-Where:
-- `G` is the graph.
-- `R(G)` is the set of vertices reachable from node `0`, excluding node `0`.
-- `dist(0,v)` is the shortest-path distance from node `0` to vertex `v`.
-
-Unreachable vertices contribute zero to the metric.
-
----
+Returns the indices of the `k` graphs with the smallest metric values among those processed so far, calculated as defined in the project requirements.
 
 ## Input Format
 
@@ -101,8 +76,6 @@ TopK
 ```
 
 Each adjacency matrix row contains `d` comma-separated integer values.
-
----
 
 ## Example
 
@@ -133,8 +106,6 @@ TopK
 
 The output contains the indices of the two graphs with the lowest metric values.
 
----
-
 ## Technologies
 
 | Technology | Purpose |
@@ -149,8 +120,6 @@ The output contains the indices of the two graphs with the lowest metric values.
 - Variable Length Arrays (VLAs) are permitted.
 - Input is read from `stdin`.
 - Output is written to `stdout`.
-
----
 
 ## Compilation and Execution
 
@@ -172,31 +141,5 @@ gcc -std=c11 -O2 -Wall -Wextra main.c -o graphranker
 ```
 
 The application reads commands from standard input and writes ranking results to standard output.
-
----
-
-## Technical Skills Demonstrated
-
-This project demonstrates practical experience with:
-
-- **Algorithms and Data Structures:** Applying algorithmic techniques to graph-processing problems.
-- **Graph Theory:** Working with directed, weighted graphs and adjacency matrices.
-- **Shortest-Path Algorithms:** Computing shortest-path distances from a source vertex.
-- **Ranking and Data Management:** Maintaining a ranking under sequential insertions and queries.
-- **Algorithmic Complexity:** Considering execution time and memory consumption.
-- **Low-Level Programming:** Implementing a solution in C11 under strict library and execution constraints.
-- **Problem Solving:** Translating formal problem specifications into an executable solution.
-
----
-
-## Project Context
-
-Developed as part of the Algorithms and Data Structures coursework.
-
-The project was designed to evaluate algorithmic correctness and efficiency through automated testing, including execution-time and memory-consumption measurements.
-
-**Language:** C11  
-**Category:** Algorithms & Data Structures / Graph Algorithms  
-**Project Type:** Academic / Individual Project
 
 ---
